@@ -10,18 +10,24 @@
     <script>
       <!--
       
-        function onclickAuthHandle() {
-            
-        
-            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-              // Handle Errors here.
-              var errorCode = error.code;
-              var errorMessage = error.message;
-              // ...
+        $(document).ready(function(){
+
+            // Get value on button click and show alert
+            $("#myBtn").click(function(){
+                var uname = $("#myInputUname").val();
+                var psw = $("#myInputPsw").val();
+              
+                firebase.auth().createUserWithEmailAndPassword(uname, psw).catch(function(error) {
+                  // Handle Errors here.
+                  var errorCode = error.code;
+                  var errorMessage = error.message;
+                  // ...
+                });
+
             });
-        }
-      
-       -->
+        });      
+
+      -->
     </script>
   </head>
 
@@ -34,12 +40,12 @@
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="uname" id="myInputUname" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw" id="myInputPsw" required>
 
-    <button type="button">Login</button>
+    <button type="button" id="myBtn">Login</button>
     <label>
       <input type="checkbox" checked="unchecked" name="remember"> Remember me
     </label>
